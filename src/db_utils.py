@@ -12,6 +12,7 @@ def create_database(db_name: str, params: Dict[str, Any]) -> None:
     cur = conn.cursor()
 
     try:
+        cur.execute(f"DROP DATABASE IF EXISTS {db_name}")
         cur.execute(f"CREATE DATABASE {db_name}")
         print(f"База данных '{db_name}' успешно создана.")
     except psycopg2.Error as e:
